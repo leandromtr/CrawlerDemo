@@ -1,0 +1,136 @@
+﻿Reference from: https://medium.com/@thepen0411/web-crawling-tutorial-in-c-48d921ef956a
+
+
+
+
+
+
+Web Crawling tutorial in c#
+in this tutorial i am going to show you how to do web crawling using c# and some .Net assemblies like
+
+HtmlAgilityPack
+Net.Http
+i am writing this tutorial after watching a video tutorial from @Houssem Dellai. in my next tutorial i will be using python for web scrapping
+
+What is Web Crawling?
+Crawling is the process by virtue of which the search engines gather information about websites on world wide web. It can also be used for automating maintenance tasks on a Web site, such as checking links or validating HTML code
+
+Crawling basically means following a path. this is why many website developers provides site map for easy navigation and crawling on their websites.
+
+How can search engines recommend a few pages out of the trillions that exist?the answer is web crawling
+
+What is a Web Crawler?
+A web Crawler also known as a web spider or a webrobot is a program or automated script which browses the world Wide Web in a methodological, automated manner. This process is called Web crawling or Spidering. Many Legitimate sites, in particularly search engines, use Spidering as a means of providing up to date data for analyses.
+
+Web crawlers are computer programs that scan the web, ‘reading’ everything they find. Web crawlers are also known as spiders, bots and automatic indexers. These crawlers scan web pages to see what words they contain, and where those words are used. The crawler turns its findings into a giant index
+
+The purpose of web crawling is typically for the purpose of Web Indexing (web spidering).
+
+Web Indexing
+Web Indexing refers to various methods for indexing the contents of a website or of the Internet as a whole. The index is basically a big list of words and the web pages that feature them.Web crawlers scan the web regularly so they always have an up-to-date index of the web . So when you ask a search engine for pages about hippos, the search engine checks its index and gives you a list of pages that mention hippos.
+
+When Google visits your website for tracking purposes. This process is done by Google’s Spider crawler and after crawling has been done, the results get put onto Google’s index (i.e. web search)
+
+Some Web Crawling tools for different platforms
+Nutch
+Scrapy
+GRUB
+Ccrawler
+Opese
+Googlebot
+Arachnode.net
+JSpider
+Arale
+WebLech
+after all the introduction to what web crawling is all about, lets us now go into real coding using c# and visual studio 2013 following the these steps. remember that for this tutorial we are just going to be getting the car models, link , image url and prices but after mastering this process you can get any information on any site provided they are available on the site but if you have any challenges you can reach me so that we can look into together.
+
+Launch your visual studio
+
+Home Screen
+2. Create new project
+
+click on new project to create a new project , choose console Application and name it CrawlerDemo then press ok
+
+
+3. after creating the project add the HtmlAgilityPack and Net.Http references to the project by right clicking on the project name in the solution explorer and then select Manage Nuget Packages then type HtmlAgilityPack inside the search box then click install. Repeat the same process for Net.Http
+
+NB: please make sure you are connected to the internet and also that you Solution explorer will not have the Car class, we will create that later, this is just how you Solution explorer will look like at the end of the tutorial, so be patient
+
+
+
+4. after adding the references to our project let us import them into the project by adding
+
+using HtmlAgilityPack;
+using System.Net.Http;
+So our project should be similar to this image below
+
+
+let us create an async method and name it startCrawlerasync()
+
+
+next we create a variable for the site url and also an instance of the httpClient to hold the site url and also an htmldocument to gain access to the various html elements and tags on the site
+
+
+remember that the site we want to perform web crawling on is
+
+
+if you right click on the page to inspect the page will have a view similar to the image below
+
+
+next we will declare a variable called divs to store the div element since all other elements and tags that carries the vehicle information for the tutorial are embedded inside div element with the class name “article_new_car article_last_modele”
+
+
+next let us create a class called Car with the following properties;
+
+Model
+
+Price
+
+Link
+
+ImageUrl
+
+if you dont know how to create a class, just right on the project in the solution explorer and then select add the choose class then name it Car then press add
+
+
+after adding the Car class the click on it to open it if it not open for coding then add the above properties to it. should look similar to this
+
+
+then navigate back to the main program to continue, we will need to add foreach statement in order to loop over the values and elements in the divs variable
+
+
+note that the Model of the car is inside the h2 element , the prices are inside a div element, the link to the car is inside the anchor tag and the Imageurl is inside a img tag.
+
+next we we will create a list and pass the Car class as type to hold all the information collected.
+
+
+next we will pause the project at the point shown below then click run after then hover your mouse on the cars variable and then collapse it to view the various models and prices. other information are also available inside the Cars variable but since we have configured the debuggerDisplay to display the model and prices side by side
+
+
+let us pause and run the code
+
+
+Hurray! how code is working as intended
+
+Happy Coding!!!
+
+i want to advance the code by adding the information to a database to store them in case there is need for future purpose
+
+first let us create our database structure as shown below
+
+2. then add the following line of codes to the project as shown below
+
+
+
+after running the application and pressing the enter key to exit the application your database should have been update as shown below
+
+
+Thanks for taking your time to read this article,
+
+I hope it was helpful?
+
+i am <coded out/>
+
+you can download the full code from my git account
+
+https://github.com/abdulateef/webcrawling
